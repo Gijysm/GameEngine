@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WindowEngine.GameProject"
         mc:Ignorable="d" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
-        Title="Browse_Window" Height="450" Width="800">
+        Title="Browse Window" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -18,14 +18,17 @@
             <ToggleButton Content="Open Project" x:Name="OpenProjectButton" FontSize = "32" Click ="OnToggleButton_Click" Margin="30, 0, 0, 0" IsChecked="False"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="1" Name="BrowsePanel">
-            <Border Width="800" Background="MediumPurple">
+            <local:OpenProjectView/>
+            <local:NewProjectView />
+        </StackPanel>
+        <!--<Border Width="800" Background="MediumPurple">
                 <TextBlock FontSize="72" Text="Open Project"></TextBlock>
             </Border>
             <Border Width="800" Background="LawnGreen">
                 <TextBlock FontSize="72" Text="Create Project"></TextBlock>
-            </Border>
+            </Border>-->
 
-        </StackPanel>
+        
 
     </Grid>
 </Window>

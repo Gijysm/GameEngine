@@ -55,6 +55,7 @@ namespace WindowEngine.GameProject
             }
             if (e.Key == Key.O && Keyboard.Modifiers == ModifierKeys.Control)
             {
+
                     if (CreateProjectButton.IsChecked == true)
                     {
                         CreateProjectButton.IsChecked = false;
