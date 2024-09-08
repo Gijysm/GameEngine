@@ -78,12 +78,14 @@
     <Compile Include="GameProject\Browse_Window.xaml.cs">
       <DependentUpon>Browse_Window.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GameProject\NewProject.cs" />
     <Compile Include="GameProject\NewProjectView.xaml.cs">
       <DependentUpon>NewProjectView.xaml</DependentUpon>
     </Compile>
     <Compile Include="GameProject\OpenProjectView.xaml.cs">
       <DependentUpon>OpenProjectView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GameProject\ViewModelBase.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
