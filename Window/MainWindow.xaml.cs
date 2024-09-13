@@ -36,13 +36,21 @@ namespace WindowEngine
         private void OpenProjectBrowseDialog()
         {
             var Dialog = new Browse_Window();
-            if(Dialog.ShowDialog() == false)
+            bool? result = Dialog.ShowDialog();
+            if (result == false || result == null)
             {
-                Application.Current.Shutdown();
+                if (Application.Current != null)
+                {
+                    Application.Current.Shutdown();
+                }
+                else
+                {
+                    // Handle the case where Application.Current is null
+                }
             }
             else
             {
-
+                // Handle the case where the dialog result is true
             }
         }
     }

@@ -17,12 +17,14 @@ namespace WindowEngine.GameProject
     {
         [DataMember]
         public string ProjectType { get; set; }
+        [DataMember]
         public string ProjectFile { get; set; }
-        public List<string> ListOfProjects { get; set; }
+        [DataMember]
+        public List<string> Folder { get; set; }
     }
     public class NewProject : ViewModelBase
     {
-        private readonly string _projectPath = $@"..\GameEngine\GamesFolder\";
+        private readonly string _projectPath = $@"..\\GameEngine\\Window\\GamesFolder";
    
         private string _name = "New project";
 
@@ -54,24 +56,23 @@ namespace WindowEngine.GameProject
         public NewProject()
         {
             projectTemplates = new ReadOnlyObservableCollection<ProjectTemplate>(_projectTemplates);
-            try
-            {
-                if (_projectPath != null)
+            //try
+            //{
+            if (_projectPath != null)
                 {
                     var templatesFiles = Directory.GetFiles(_projectPath, "template.xml", SearchOption.AllDirectories);
                     Debug.Assert(templatesFiles.Any());
                     foreach (var file in templatesFiles)
                     {
                         var template = Serializer.FromFile<ProjectTemplate>(file);
-                        _projectTemplates.Add(template);
-                    }
+                    _projectTemplates.Add(template);
                 }
-                throw new Exception("Error");
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex.Message);
-            }
+                }
+            //}
+            //catch (Exception ex)
+            //{
+            //    Debug.WriteLine(ex.Message);
+            //}
         }
 
     }

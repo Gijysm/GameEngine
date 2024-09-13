@@ -11,7 +11,7 @@ namespace WindowEngine.Untilites
 {
     public static class Serializer
     {
-        public static void Serialize<T>(T instance, string path)
+        public static void ToFile<T>(T instance, string path)
         {
             try
             {
@@ -24,7 +24,6 @@ namespace WindowEngine.Untilites
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
-                throw;
             }
         }
 
