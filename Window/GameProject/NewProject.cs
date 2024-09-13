@@ -1,14 +1,29 @@
 ﻿using System;
+using System.Runtime.Serialization;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WindowEngine.Untilites;
+using System.Collections.ObjectModel;
 
 namespace WindowEngine.GameProject
 {
+    [DataContract]
+    public class ProjectTemplate
+    {
+        [DataMember]
+        public string ProjectType { get; set; }
+        public string ProjectFile { get; set; }
+        public List<string> ListOfProjects { get; set; }
+    }
     public class NewProject : ViewModelBase
     {
+        private readonly string _projectPath = $@"..\GameEngine\GamesFolder\";
+   
         private string _name = "New project";
 
         public string Name
@@ -31,5 +46,33 @@ namespace WindowEngine.GameProject
                 OnPropertyChanged(nameof(Path));
             }
         }
+        private ObservableCollection<ProjectTemplate> _projectTemplates = new ObservableCollection<ProjectTemplate>();
+        public ReadOnlyObservableCollection<ProjectTemplate> projectTemplates
+        {
+            get;
+        }
+        public NewProject()
+        {
+            projectTemplates = new ReadOnlyObservableCollection<ProjectTemplate>(_projectTemplates);
+            try
+            {
+                if (_projectPath != null)
+                {
+                    var templatesFiles = Directory.GetFiles(_projectPath, "template.xml", SearchOption.AllDirectories);
+                    Debug.Assert(templatesFiles.Any());
+                    foreach (var file in templatesFiles)
+                    {
+                        var template = Serializer.FromFile<ProjectTemplate>(file);
+                        _projectTemplates.Add(template);
+                    }
+                }
+                throw new Exception("Error");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+        }
+
     }
 }

@@ -7,6 +7,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GameEngine", "GameEngine\Ga
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowEngine", "Window\WindowEngine.csproj", "{986E407D-B4E3-49E7-B750-4198100B8EAF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GamesFolder", "GamesFolder", "{210516C0-96E0-4AD1-9A4F-D7C03A9CE605}"
+	ProjectSection(SolutionItems) = preProject
+		template.xml = template.xml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
